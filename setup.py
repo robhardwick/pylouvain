@@ -27,7 +27,7 @@ setup(
             ['src/pylouvain.cpp', 'src/graph.cpp'],
             include_dirs = ['include', '/usr/local/include'],
             library_dirs = ['/usr/local/lib'],
-            libraries = ['boost_python-mt']
+            libraries = ['boost_python']
         ),
     ]
 )
