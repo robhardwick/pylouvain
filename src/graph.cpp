@@ -63,8 +63,8 @@ void Graph::write(const std::string& basename) {
                 fnweights = basename + ".weights";
 
     // Open output files
-    std::ofstream olinks(fnlinks, std::fstream::out | std::fstream::binary),
-                  oweights(fnweights, std::fstream::out | std::fstream::binary);
+    std::ofstream olinks(fnlinks.c_str(), std::fstream::out | std::fstream::binary),
+                  oweights(fnweights.c_str(), std::fstream::out | std::fstream::binary);
 
     // Ensure output files are writable
     if (!olinks.good()) {
