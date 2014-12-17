@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <map>
+#include <stdexcept>
 #include <boost/exception/enable_current_exception.hpp>
 #include "pylouvain.hpp"
 
