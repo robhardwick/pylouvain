@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <map>
 #include <boost/exception/enable_current_exception.hpp>
 #include "pylouvain.hpp"
 
@@ -23,6 +24,33 @@ void Graph::addEdge(unsigned int src, unsigned int dest, double weight) {
     // Add dest -> src edge
     if (src != dest) {
         links[dest].push_back(std::make_pair(src, weight));
+    }
+}
+
+/**
+ * Clean
+ */
+void Graph::clean() {
+    for (unsigned int i = 0; i < links.size(); i++) {
+        std::map<int, float> m;
+        std::map<int, float>::iterator it;
+
+        for (unsigned int j = 0; j < links[i].size(); j++) {
+            it = m.find(links[i][j].first);
+            if (it == m.end()) {
+                m.insert(std::make_pair(links[i][j].first, links[i][j].second));
+            } else {
+                it->second+=links[i][j].second;
+            }
+
+            std::vector<std::pair<int, float> > v;
+            for (it = m.begin(); it != m.end(); it++) {
+                v.push_back(*it);
+            }
+
+            links[i].clear();
+            links[i]=v;
+        }
     }
 }
 

@@ -13,6 +13,7 @@ namespace pylouvain {
         public:
             Graph() {}
             void addEdge(unsigned int src, unsigned int dest, double weight);
+            void clean();
             void write(const std::string &basename);
 
         private:

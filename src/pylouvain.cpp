@@ -10,6 +10,7 @@ BOOST_PYTHON_MODULE(pylouvain) {
     // Graph class
     class_<Graph>("Graph", init<>())
         .def("addEdge", &Graph::addEdge)
+        .def("clean", &Graph::clean)
         .def("write", &Graph::write);
 
 }
